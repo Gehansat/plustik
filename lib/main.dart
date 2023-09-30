@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:plustik/pages/intro_screens/onboarding_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Plustik",
-      home: Scaffold(
-        backgroundColor: Color(0xffFCFBFF),
+      theme: ThemeData(
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
+      home: const OnBoaringScreen(),
     );
   }
 }
