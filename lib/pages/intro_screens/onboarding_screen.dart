@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plustik/pages/intro_screens/intro_page_1.dart';
 import 'package:plustik/pages/intro_screens/intro_page_2.dart';
 import 'package:plustik/pages/intro_screens/intro_page_3.dart';
+import 'package:plustik/pages/intro_screens/intro_page_4.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoaringScreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _OnBoaringScreenState extends State<OnBoaringScreen> {
             IntroPage1(),
             IntroPage2(),
             IntroPage3(),
+            IntroPage4()
           ],
         ),
         // Dot Indicator
@@ -34,7 +36,7 @@ class _OnBoaringScreenState extends State<OnBoaringScreen> {
           alignment: const Alignment(0.7, 0.9),
           child: SmoothPageIndicator(
             controller: _controller,
-            count: 3,
+            count: 4,
             effect: const ExpandingDotsEffect(
               dotWidth: 10,
               dotHeight: 10,

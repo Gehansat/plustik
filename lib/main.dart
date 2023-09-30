@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plustik/pages/intro_screens/onboarding_screen.dart';
 import 'package:plustik/pages/splash_screen/splash.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: const SplashScreen(),
+      home: const OnBoaringScreen(),
     );
   }
 }
