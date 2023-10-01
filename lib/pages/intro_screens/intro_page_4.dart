@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plustik/pages/login/login.dart';
+import 'package:plustik/pages/login/login_page.dart';
 
 class IntroPage4 extends StatelessWidget {
   const IntroPage4({super.key});
@@ -57,7 +57,7 @@ class IntroPage4 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Login()),
+                        MaterialPageRoute(builder: (context) => LoginPage()),
                       );
                     },
                     child: const Text(
@@ -108,7 +108,7 @@ class IntroPage4 extends StatelessWidget {
                   onPressed: () {
                      Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Login()),
+                        MaterialPageRoute(builder: (context) => LoginPage()),
                       );
                   },
                   child: const Text("SIGN IN",

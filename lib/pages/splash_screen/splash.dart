@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plustik/pages/login/login.dart';
+import 'package:plustik/pages/login/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(milliseconds: 1600), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Login()));
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
     });
   }
 
