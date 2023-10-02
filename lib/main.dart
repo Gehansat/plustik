@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plustik/pages/login/login_page.dart';
+import 'package:plustik/pages/login/auth_page.dart';
 // firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: LoginPage(),
+      home: const AuthPage(),
     );
   }
 }
