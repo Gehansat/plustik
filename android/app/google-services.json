@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184777485102",
+    "project_id": "plustik-fdd2a",
+    "storage_bucket": "plustik-fdd2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184777485102:android:29b13d501dae92057068bf",
+        "android_client_info": {
+          "package_name": "com.example.plustik"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTu3UzUfWIZnW1BsY02t003KQbIjTZBoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
