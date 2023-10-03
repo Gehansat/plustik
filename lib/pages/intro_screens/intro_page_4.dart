@@ -57,7 +57,7 @@ class IntroPage4 extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        MaterialPageRoute(builder: (context) => LoginPage(onTap: () {})),
                       );
                     },
                     child: const Text(
@@ -108,7 +108,7 @@ class IntroPage4 extends StatelessWidget {
                   onPressed: () {
                      Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        MaterialPageRoute(builder: (context) => LoginPage(onTap: () {},)),
                       );
                   },
                   child: const Text("SIGN IN",

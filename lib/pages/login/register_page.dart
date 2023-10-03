@@ -4,24 +4,26 @@ import 'package:plustik/components/login/login_textfield.dart';
 import 'package:plustik/components/login/sign_in_out_button.dart';
 import 'package:plustik/components/login/squre_tile.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  const LoginPage({
+  const RegisterPage({
     super.key,
     required this.onTap,
   });
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   // Text editing controller
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   // Sign in function
-  void signUserIn() async {
+  void signUserUp() async {
     // show loading circle
     showDialog(
         context: context,
@@ -31,13 +33,27 @@ class _LoginPageState extends State<LoginPage> {
           );
         });
 
-    // try sign in
-    
+    // try sign up
+
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      if (passwordController.text == confirmPasswordController.text) {
+        final UserCredential userCredential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+
+        // Set the user's display name
+        await userCredential.user?.updateDisplayName(nameController.text);
+        // hide loading circle if success
+        Navigator.pop(context);
+        
+      } else {
+        // show error message, password doesn't match
+        showErrorMessage("Password doesn't match");
+        Navigator.pop(context);
+      }
+
       // hide loading circle if success
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -82,25 +98,46 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 50,
+                  height: 45,
                 ),
                 Image.asset(
                   "assets/logo.png",
-                  scale: 1.2,
+                  scale: 1.8,
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 12, bottom: 15),
+                  padding: EdgeInsets.only(top: 12, bottom: 10),
                   child: Text(
-                    "Sign Into Your Account",
+                    "Create your account",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),
                 const SizedBox(height: 10),
                 // Login Fields
 
+                // Name
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Name",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w500),
+                        ),
+                        LoginTextField(
+                          controller: nameController,
+                          hintText: "Enter your name",
+                          obscureText: false,
+                        ),
+                      ]),
+                ),
+
                 // Email
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -117,13 +154,10 @@ class _LoginPageState extends State<LoginPage> {
                       ]),
                 ),
 
-                const SizedBox(
-                  height: 20,
-                ),
-
                 // Password
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -140,20 +174,40 @@ class _LoginPageState extends State<LoginPage> {
                       ]),
                 ),
 
-                const SizedBox(
-                  height: 35,
+                // Confirm Password
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Confirm Password",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w500),
+                        ),
+                        LoginTextField(
+                          controller: confirmPasswordController,
+                          hintText: "Confirm your password",
+                          obscureText: true,
+                        ),
+                      ]),
                 ),
 
-                // Sign In Button
+                const SizedBox(
+                  height: 30,
+                ),
+
+                // Sign Up Button
                 SignInButton(
-                  text: "SIGN IN",
-                  onTap: signUserIn,
+                  text: "SIGN UP",
+                  onTap: signUserUp,
                 ),
 
                 // Divider and Text
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                   child: Row(
                     children: [
                       Expanded(
@@ -191,20 +245,16 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account?",
+                    const Text("Have an account?",
                         style:
                             TextStyle(color: Color(0xff888888), fontSize: 14)),
                     const SizedBox(
                       width: 4,
                     ),
                     GestureDetector(
-                      onTap: widget.onTap,
-                      child: const Text(
-                        "SIGN UP",
-                        style: TextStyle(color: Color(0xff00B140)
-                        )
-                      )
-                    ),
+                        onTap: widget.onTap,
+                        child: const Text("SIGN IN",
+                            style: TextStyle(color: Color(0xff00B140)))),
                   ],
                 ),
               ],
