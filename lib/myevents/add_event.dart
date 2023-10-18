@@ -128,7 +128,7 @@ class _AddEventPageState extends State<AddEventPage> {
     // Show a success message or navigate to another page
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Event added successfully'),
+        content: Text('Event added successfullyy'),
       ),
     );
   }
