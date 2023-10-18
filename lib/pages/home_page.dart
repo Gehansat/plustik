@@ -97,7 +97,7 @@ class HomePage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                      CupertinoPageRoute(builder: (ctx) => const EventCalenderPage()),
+                      CupertinoPageRoute(builder: (ctx) => EventCalenderPage()),
                     );
                   },
                   child: Container(
