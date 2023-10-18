@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plustik/myevents/event_calender.dart';
+import 'package:plustik/pages/myevents/event_calender.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
