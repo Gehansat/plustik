@@ -11,19 +11,19 @@ class EventCalenderPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
+
+
           children: [
             const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  CupertinoPageRoute(builder: (ctx) => AddEventPage()),
-                );
-              },
-              child: const Text('Event Calender'),
+            ElevatedButton(onPressed: () {
+              Navigator.of(context).push(
+                CupertinoPageRoute(builder: (ctx) => AddEventPage()),
+              );},
+              child: const Text("Add Event"),
             ),
           ],
-        )
-      )
+        ),
+      ),
     );
   }
 }
