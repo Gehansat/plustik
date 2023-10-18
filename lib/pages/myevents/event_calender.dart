@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plustik/myevents/add_event.dart';
+import 'package:plustik/pages/myevents/add_event.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class EventCalenderPage extends StatelessWidget {
