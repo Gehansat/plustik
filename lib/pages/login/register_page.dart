@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plustik/components/login/login_textfield.dart';
 import 'package:plustik/components/login/sign_in_out_button.dart';
 import 'package:plustik/components/login/squre_tile.dart';
+import 'package:regexed_validator/regexed_validator.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -32,6 +33,16 @@ class _RegisterPageState extends State<RegisterPage> {
             child: CircularProgressIndicator(),
           );
         });
+
+    // Email validation using regexed_validator
+    final String email = emailController.text;
+
+    if (!validator.email(email)) {
+      // Invalid email format
+      showErrorMessage("Invalid email address");
+      Navigator.pop(context);
+      return;
+    }
 
     // try sign up
 
