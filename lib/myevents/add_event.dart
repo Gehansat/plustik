@@ -18,94 +18,119 @@ class _AddEventPageState extends State<AddEventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Add Event'),
-      ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: EdgeInsets.all(16.0),
-          children: [
-            TextFormField(
-              controller: eventNameController,
-              decoration: InputDecoration(labelText: 'Event Name'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter an event name';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: dateController,
-              decoration: const InputDecoration(
+      body: Center(
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            padding: EdgeInsets.all(30.0),
+
+            children: [
+              const SizedBox(height: 40),
+              const Center(
+                child: Text(
+                  'Add a Event',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 50),
+              TextFormField(
+                controller: eventNameController,
+                decoration: InputDecoration(labelText: 'Event Name'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an event name';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 15),
+              TextFormField(
+                controller: dateController,
+                decoration: const InputDecoration(
                   labelText: 'Date',
                   hintText: 'YYYY-MM-DD',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a date';
+                  }
+                  return null;
+                },
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a date';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: timeController,
-              decoration: const InputDecoration(
+              const SizedBox(height: 15),
+              TextFormField(
+                controller: timeController,
+                decoration: const InputDecoration(
                   labelText: 'Time',
                   hintText: 'HH:MM',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a time';
+                  }
+                  return null;
+                },
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a time';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: venueController,
-              decoration: InputDecoration(labelText: 'Venue'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a venue';
-                }
-                return null;
-              },
-            ),
-            DropdownButton<String>(
-              value: selectedCategory,
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedCategory = newValue!;
-                });
-              },
-              items: <String>[
-                'Workshops',
-                'Global Events',
-                'Local Events',
-                'Shramadhana Campaigns',
-                'Recycling Programs',
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  await addEventToFirebase();
-                }
-              },
-              child: Text('Add Event'),
-            ),
-          ],
+              const SizedBox(height: 15),
+              TextFormField(
+                controller: venueController,
+                decoration: InputDecoration(labelText: 'Venue'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a venue';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 25),
+              DropdownButton<String>(
+                value: selectedCategory,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedCategory = newValue!;
+                  });
+                },
+                items: <String>[
+                  'Workshops',
+                  'Global Events',
+                  'Local Events',
+                  'Shramadhana Campaigns',
+                  'Recycling Programs',
+                ].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xff00B140),
+                  onPrimary: Colors.white,
+                  minimumSize: const Size(80, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
+                  ),
+                ),
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    await addEventToFirebase();
+                  }
+                },
+                child: Text('Add Event'),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
 
   Future<void> addEventToFirebase() async {
     final user = FirebaseAuth.instance.currentUser;
@@ -127,8 +152,14 @@ class _AddEventPageState extends State<AddEventPage> {
 
     // Show a success message or navigate to another page
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Event added successfullyy'),
+      const SnackBar(
+        backgroundColor: Color(0xff00B140),
+        content: Text('Event added successfully',
+        style: TextStyle(
+          fontSize: 17,
+          // fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
