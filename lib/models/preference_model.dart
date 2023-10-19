@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class PreferenceModel {
   bool GlobEvents;
   bool LocEvents;
@@ -33,5 +31,25 @@ class PreferenceModel {
       Workshops: json['Workshops'] ?? false,
       Recycling: json['Recycling'] ?? false,
     );
+  }
+
+  List<String> getSelectedCategories() {
+    final selectedCategories = <String>[];
+    if (GlobEvents) {
+      selectedCategories.add('Global Events');
+    }
+    if (LocEvents) {
+      selectedCategories.add('Local Events');
+    }
+    if (Shramadhana) {
+      selectedCategories.add('Shramadhana Campaigns');
+    }
+    if (Workshops) {
+      selectedCategories.add('Workshops');
+    }
+    if (Recycling) {
+      selectedCategories.add('Recycling Programs');
+    }
+    return selectedCategories;
   }
 }

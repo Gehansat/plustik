@@ -97,27 +97,10 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () async {
-                    final prefs = await SharedPreferences.getInstance();
-                    final preferencesSet = prefs.getBool('preferences_set') ?? false;
-
-                    if (preferencesSet) {
-                      Navigator.of(context).push(
-                        CupertinoPageRoute(builder: (ctx) => EventCalenderPage()),
-                      );
-                    } else {
-                      final result = await Navigator.of(context).push(
-                        CupertinoPageRoute(builder: (ctx) => PreferencesScreen(user!)),
-                      );
-
-                      // Check the result from PreferencesScreen.
-                      if (result == 'preferences_set') {
-                        // User set preferences, so navigate to EventCalenderPage.
-                        Navigator.of(context).push(
-                          CupertinoPageRoute(builder: (ctx) => EventCalenderPage()),
-                        );
-                      }
-                    }
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => PreferencesScreen(user!)),
+                    );
                   },
                   child: Container(
                     width: screenwidth * 0.4,
