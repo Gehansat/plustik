@@ -19,7 +19,7 @@ class ReminderPage extends StatelessWidget {
                 color: const Color(0xffF5F5F5),
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: Stack(
+              child: Column(
                 children: [
                   const Align(
                     alignment: Alignment.center,
