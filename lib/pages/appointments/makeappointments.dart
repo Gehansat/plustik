@@ -70,7 +70,7 @@ class MakeAppointmentsPage extends StatelessWidget {
                   onTap: () {
                     // Navigate to the Appointments page
                     Navigator.of(context).push(
-                      CupertinoPageRoute(builder: (ctx) => Appointment()),
+                      CupertinoPageRoute(builder: (ctx) => AppointmenttwoDetailsPage()),
                     );
                   },
                   child: Container(
@@ -82,7 +82,7 @@ class MakeAppointmentsPage extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        "Make Appointment",
+                        "Next",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18.0,
