@@ -44,6 +44,12 @@ class _EventCalenderPageState extends State<EventCalenderPage> {
           // and retrieve events from Firebase based on the selected date
           // and display them using your Event model.
           // Example: EventListView(selectedDate: _selectedDay),
+          ElevatedButton(onPressed: () {
+            Navigator.of(context).push(
+              CupertinoPageRoute(builder: (ctx) => AddEventPage()),
+            );},
+            child: const Text("Add Event"),
+          ),
         ],
       ),
     );

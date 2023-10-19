@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plustik/components/login/login_textfield.dart';
 import 'package:plustik/components/login/sign_in_out_button.dart';
 import 'package:plustik/components/login/squre_tile.dart';
+import 'package:plustik/pages/preferences_page.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -58,6 +59,8 @@ class _RegisterPageState extends State<RegisterPage> {
         await userCredential.user?.updateDisplayName(nameController.text);
         // hide loading circle if success
         Navigator.pop(context);
+
+        // Navigate to the PreferencesScreen after successful registration
         
       } else {
         // show error message, password doesn't match

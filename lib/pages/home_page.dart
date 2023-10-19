@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plustik/pages/myevents/event_calender.dart';
+import 'package:plustik/pages/preferences_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -95,10 +97,27 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      CupertinoPageRoute(builder: (ctx) => EventCalenderPage()),
-                    );
+                  onTap: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    final preferencesSet = prefs.getBool('preferences_set') ?? false;
+
+                    if (preferencesSet) {
+                      Navigator.of(context).push(
+                        CupertinoPageRoute(builder: (ctx) => EventCalenderPage()),
+                      );
+                    } else {
+                      final result = await Navigator.of(context).push(
+                        CupertinoPageRoute(builder: (ctx) => PreferencesScreen(user!)),
+                      );
+
+                      // Check the result from PreferencesScreen.
+                      if (result == 'preferences_set') {
+                        // User set preferences, so navigate to EventCalenderPage.
+                        Navigator.of(context).push(
+                          CupertinoPageRoute(builder: (ctx) => EventCalenderPage()),
+                        );
+                      }
+                    }
                   },
                   child: Container(
                     width: screenwidth * 0.4,
@@ -119,6 +138,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 const SizedBox(width: 25,),
               ],
             ),
