@@ -43,6 +43,7 @@ dependencies:
   shared_preferences: ^2.2.2
   regexed_validator: ^2.0.0+1
   table_calendar: ^3.0.9
+  firebase_database: ^10.3.0
 
 dev_dependencies:
   flutter_test:
