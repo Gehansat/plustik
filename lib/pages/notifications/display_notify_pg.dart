@@ -12,6 +12,38 @@ class DisplayNotify extends StatelessWidget {
         child:Column(
           children: [
             const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+
+                 Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Image.asset(
+                        "assets/notify.png",
+                        width:70,
+                        height:70,
+                        scale: 0.9,
+                      ),
+                    ),
+                  ),
+
+                const Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        "Notifications!",
+                        style: TextStyle(
+                          fontSize: 23.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           
             const SizedBox(height: 60),
             Container(
@@ -21,6 +53,7 @@ class DisplayNotify extends StatelessWidget {
                 color: const Color(0xffF5F5F5),
                 borderRadius: BorderRadius.circular(10.0),
               ),
+              
               child: Stack(
                 children: [
                   const Align(
@@ -36,19 +69,21 @@ class DisplayNotify extends StatelessWidget {
                       ),
                     ),
                   ),
-                 
-                  Align(
-                    alignment: Alignment.topCenter,
+                  const Align(
+                    alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset(
-                        "assets/notify.png",
-                        width:70,
-                        height:70,
-                        scale: 0.9,
+                      padding: EdgeInsets.all(20.0),
+                      child: Text(
+                        "We are coming soon!",
+                        style: TextStyle(
+                          fontSize: 23.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
+                 
+                 
                 ],
               ),
 
