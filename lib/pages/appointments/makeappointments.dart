@@ -1,8 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:plustik/pages/appointments/appointmenttwo.dart';
 
 class MakeAppointmentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text('Make Appointments'),
@@ -54,30 +59,43 @@ class MakeAppointmentsPage extends StatelessWidget {
                         decoration: InputDecoration(labelText: 'Contact Number'),
                       ),
                       SizedBox(height: 20),
-                      Text('Page 1 of 2'),
+                      Text('1 / 2'),
                     ],
                   ),
                 ),
               ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Cancel button action
-                    },
-                    child: Text('Cancel'),
+             
+                  GestureDetector(
+                  onTap: () {
+                    // Navigate to the Appointments page
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => Appointment()),
+                    );
+                  },
+                  child: Container(
+                    width: screenWidth * 0.1,
+                    height: screenHeight * 0.08,
+                    decoration: BoxDecoration(
+                      color: Color(0xff00B140),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Make Appointment",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Next button action
-                    },
-                    child: Text('Next'),
-                  ),
+                ),
                 ],
-              ),
-            ],
+              
+            
           ),
         ),
       ),
