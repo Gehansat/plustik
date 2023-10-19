@@ -48,7 +48,10 @@ class _AppointmenttwoDetailsPageState extends State<AppointmenttwoDetailsPage> {
                         decoration: InputDecoration(labelText: 'Email'),
                       ),
                       SizedBox(height: 20),
-                      Text('Type of Waste'),
+                      Text('Type of Waste' , style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16
+                        ),),
                       CheckboxListTile(
                         title: Text('Plastic'),
                         value: isPlasticChecked,
@@ -81,6 +84,8 @@ class _AppointmenttwoDetailsPageState extends State<AppointmenttwoDetailsPage> {
                         decoration: InputDecoration(labelText: 'Special Instructions'),
                         maxLines: 2,
                       ),
+                      SizedBox(height: 20),
+                      Text('2 / 2'),
                     ],
                   ),
                 ),
@@ -110,9 +115,10 @@ class _AppointmenttwoDetailsPageState extends State<AppointmenttwoDetailsPage> {
                         color: Colors.white,
                       ),
                     ),
+                    
                   ),
                 ),
-              ),
+              ),SizedBox(height: 40),
             ],
           ),
         ),
