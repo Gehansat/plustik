@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:plustik/pages/notifications/display_notify_pg.dart';
 
 class NotifyTypePage extends StatelessWidget {
   const NotifyTypePage({super.key});
@@ -90,24 +92,31 @@ class _CheckBoxListState extends State<CheckBoxList> {
                       ),
                     ),
             ),
-            const SizedBox(height: 20),
-            Container(
-              // width: screenwidth * 0.8,
-                    height: screenheight * 0.08,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff00B140),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: const Center(
-                      child: Text("View",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+            const SizedBox(height: 60),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  CupertinoPageRoute(builder: (ctx) => const DisplayNotify()),
+                );
+              },
+              child: Container(
+                // width: screenwidth * 0.8,
+                      height: screenheight * 0.08,
+                      decoration: BoxDecoration(
+                        color: const Color(0xff00B140),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: const Center(
+                        child: Text("View",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
+              ),
             ),
         ],
       ),
