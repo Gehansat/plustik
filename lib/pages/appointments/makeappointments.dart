@@ -22,22 +22,27 @@ class MakeAppointmentsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Text(
-                'Make your Appointment',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+              Center(
+                child: Text(
+                  'Make your Appointment',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: 20),
               Card(
                 elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0), // Border radius here
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                       // Page number indicator
-        
+                      // Page number indicator
+                      
                       // Form fields for Date, Time, and Contact Number
                       TextFormField(
                         decoration: InputDecoration(labelText: 'Date'),
