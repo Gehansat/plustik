@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:plustik/pages/appointments/wastecollectionUI.dart';
 import 'package:plustik/pages/myevents/event_calender.dart';
 
 class HomePage extends StatelessWidget {
@@ -76,20 +77,27 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const SizedBox(width: 25,),
-                Container(
-                  width: screenwidth * 0.4,
-                  height: screenheight * 0.14,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff00B140),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: const Center(
-                    child: Text("My\nAppointments",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => WasteCollectionUI()),
+                    );
+                  },
+                  child: Container(
+                    width: screenwidth * 0.4,
+                    height: screenheight * 0.14,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff00B140),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: const Center(
+                      child: Text("My\nAppointments",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
