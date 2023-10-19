@@ -28,34 +28,34 @@ class _EventCalenderPageState extends State<EventCalenderPage> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 10, 20 ,10),
             child: TableCalendar(
-              calendarBuilders: CalendarBuilders(),
-              firstDay: DateTime(2021),
-              lastDay: DateTime(2030),
-              focusedDay: _focusedDay,
-              calendarFormat: _calendarFormat,
-              selectedDayPredicate: (day) {
-                return isSameDay(_selectedDay, day);
-              },
-              onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDay = selectedDay;
-                  _focusedDay = focusedDay;
-                  fetchEvents(selectedDay);
-                });
-              },
-              calendarStyle: const CalendarStyle(
-                isTodayHighlighted: true,
-                selectedDecoration: BoxDecoration(
-                  color: Color(0xff00B140),
-                  shape: BoxShape.circle,
-                ),
-                selectedTextStyle: TextStyle(color: Colors.white),
-                todayDecoration: BoxDecoration(
-                  color: Colors.grey,
-                  shape: BoxShape.circle,
-                ),
-                todayTextStyle: TextStyle(color: Colors.white),
-              )
+                calendarBuilders: CalendarBuilders(),
+                firstDay: DateTime(2021),
+                lastDay: DateTime(2030),
+                focusedDay: _focusedDay,
+                calendarFormat: _calendarFormat,
+                selectedDayPredicate: (day) {
+                  return isSameDay(_selectedDay, day);
+                },
+                onDaySelected: (selectedDay, focusedDay) {
+                  setState(() {
+                    _selectedDay = selectedDay;
+                    _focusedDay = focusedDay;
+                    fetchEvents(selectedDay);
+                  });
+                },
+                calendarStyle: const CalendarStyle(
+                  isTodayHighlighted: true,
+                  selectedDecoration: BoxDecoration(
+                    color: Color(0xff00B140),
+                    shape: BoxShape.circle,
+                  ),
+                  selectedTextStyle: TextStyle(color: Colors.white),
+                  todayDecoration: BoxDecoration(
+                    color: Colors.grey,
+                    shape: BoxShape.circle,
+                  ),
+                  todayTextStyle: TextStyle(color: Colors.white),
+                )
             ),
           ),
           EventListView(events: events),
