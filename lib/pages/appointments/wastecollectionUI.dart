@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plustik/pages/appointments/makeappointments.dart';
+import 'package:plustik/pages/appointments/appointment.dart';
 
 class WasteCollectionUI extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser;
@@ -67,7 +67,7 @@ class WasteCollectionUI extends StatelessWidget {
                   onTap: () {
                     // Navigate to the Appointments page
                     Navigator.of(context).push(
-                      CupertinoPageRoute(builder: (ctx) => MakeAppointmentsPage()),
+                      CupertinoPageRoute(builder: (ctx) => AddAppointmentPage()),
                     );
                   },
                   child: Container(
