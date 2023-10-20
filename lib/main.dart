@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:plustik/pages/login/auth_page.dart';
 // firebase
 import 'package:firebase_core/firebase_core.dart';
-import 'package:plustik/pages/splash_screen/splash.dart';
+// import 'package:plustik/pages/splash_screen/splash.dart';
 import 'firebase_options.dart';
+import 'package:plustik/pages/loyalty_program/calculate_points.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: SplashScreen(),
+      home: CalculatePointsPage(),
     );
   }
 }
