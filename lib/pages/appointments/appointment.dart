@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:plustik/pages/appointments/successpage.dart';
-
+import 'package:intl/intl.dart';
+import 'package:plustik/pages/appointments/successpage.dart'; // Import for FontAwesome icons
 
 class AddAppointmentPage extends StatefulWidget {
   @override
@@ -31,7 +31,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/logo.png', // Replace with your image asset
+                    'assets/logo.png',
                     scale: 1.7,
                   ),
                   SizedBox(height: 10),
@@ -48,10 +48,23 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    buildTextFormField(
-                      label: 'Date',
+                    TextFormField(
                       controller: dateController,
-                      hint: 'Date (YYYY-MM-DD)',
+                      decoration: InputDecoration(
+                        labelText: 'Date',
+                        hintText: 'Date (YYYY-MM-DD)',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        // Add leading icon for the calendar
+                        prefixIcon: Icon(Icons.calendar_today),
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a date';
@@ -61,12 +74,28 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                         }
                         return null;
                       },
+                      onTap: () {
+                        _selectDate(context);
+                      },
                     ),
                     SizedBox(height: 10),
-                    buildTextFormField(
-                      label: 'Time',
+                    TextFormField(
                       controller: timeController,
-                      hint: 'Time (HH:MM)',
+                      decoration: InputDecoration(
+                        labelText: 'Time',
+                        hintText: 'Time (HH:MM)',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        // Add leading icon for the clock
+                        prefixIcon: Icon(Icons.access_time),
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a time';
@@ -76,12 +105,26 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                         }
                         return null;
                       },
+                      onTap: () {
+                        _selectTime(context);
+                      },
                     ),
                     SizedBox(height: 10),
-                    buildTextFormField(
-                      label: 'Contact Number',
+                    TextFormField(
                       controller: contactnoController,
-                      hint: 'Contact Number',
+                      decoration: InputDecoration(
+                        labelText: 'Contact Number',
+                        hintText: 'Contact Number',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a contact number';
@@ -90,10 +133,21 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                       },
                     ),
                     SizedBox(height: 10),
-                    buildTextFormField(
-                      label: 'Email',
+                    TextFormField(
                       controller: emailController,
-                      hint: 'Email',
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        hintText: 'Email',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter an email';
@@ -105,10 +159,21 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                       },
                     ),
                     SizedBox(height: 10),
-                    buildTextFormField(
-                      label: 'Instructions',
+                    TextFormField(
                       controller: instructionsController,
-                      hint: 'Instructions',
+                      decoration: InputDecoration(
+                        labelText: 'Instructions',
+                        hintText: 'Instructions',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                       validator: (value) {
                         // You can add custom validation for instructions here if needed.
                         return null; // No validation in this example.
@@ -133,7 +198,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                         width: 200,
                         height: 40,
                         child: Card(
-                          color: Color(0xff00B140), // Background color
+                          color: Color(0xff00B140),
                           elevation: 4,
                           child: Center(
                             child: Text(
@@ -143,7 +208,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -154,32 +219,6 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
     );
   }
 
-  Widget buildTextFormField({
-    required String label,
-    required TextEditingController controller,
-    required String hint,
-    String? Function(String?)? validator,
-  }) {
-                               
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        hintStyle: TextStyle(color: Colors.grey),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-      validator: validator,
-    );
-  }
-
   bool isValidDate(String value) {
     final pattern = r'^\d{4}-\d{2}-\d{2}$';
     final regExp = RegExp(pattern);
@@ -187,10 +226,11 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
   }
 
   bool isValidTime(String value) {
-    final pattern = r'^\d{2}:\d{2}$';
-    final regExp = RegExp(pattern);
-    return regExp.hasMatch(value);
-  }
+  final pattern = r'^\d{1,2}:\d{2}\s[APap][Mm]$';
+  final regExp = RegExp(pattern);
+  return regExp.hasMatch(value);
+}
+
 
   bool isValidEmail(String value) {
     final pattern = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)*(\.[a-z]{2,})$';
@@ -216,6 +256,34 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
         content: Text('Appointment Created Successfully'),
       ),
     );
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null) {
+      setState(() {
+        dateController.text = DateFormat('yyyy-MM-dd').format(picked);
+      });
+    }
+  }
+
+  Future<void> _selectTime(BuildContext context) async {
+    TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    if (picked != null) {
+      setState(() {
+        timeController.text = picked.format(context);
+      });
+    }
   }
 }
 
@@ -244,27 +312,3 @@ class AppointmentDetails {
     };
   }
 }
-
-// class Successpage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Appointment Success'),
-//         backgroundColor: Color(0xff00B140),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             Text(
-//               'Appointment has been created successfully!',
-//               style: TextStyle(fontSize: 18),
-//               textAlign: TextAlign.center,
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
