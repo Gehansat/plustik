@@ -49,4 +49,3 @@ app.*.map.json
 # Ignore Gradle build output directory
 build
 local.properties
-local.properties

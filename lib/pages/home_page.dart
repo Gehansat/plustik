@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:plustik/pages/loyalty_program/packages.dart';
 // import 'package:plustik/pages/loyalty_program/loyalty_points_home.dart';
 import 'package:plustik/pages/myevents/event_calender.dart';
+import 'package:plustik/pages/notifications/notify_type_pg.dart';
+import 'package:plustik/pages/notifications/turnon_notify_pg.dart';
 import 'package:plustik/pages/preferences_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,9 +31,16 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
-                Image.asset("assets/user.png", scale: 12),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => TurnNotify()),
+                    );
+                  },
+                    child: Image.asset("assets/user.png", scale: 14)
+                ),
 
-                Text("You logged in as ${user!.email}"),
+                Text("Hi ${user?.email?.split('@')[0] ?? 'No Email'}"),
 
                 IconButton(
                     icon: const Icon(Icons.logout),
@@ -53,7 +62,12 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xffF5F5F5),
                   borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(
+                    color: const Color(0xff00B140),
+                    width: 2.0,
+                  ),
                 ),
+
                 child: Stack(
                   children: [
                     const Align(
@@ -65,6 +79,7 @@ class HomePage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 23.0,
                             fontWeight: FontWeight.bold,
+                            color: Color(0xff00B140),
                           ),
                         ),
                       ),
@@ -148,6 +163,10 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xffF5F5F5),
                   borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(
+                    color: const Color(0xff00B140),
+                    width: 2.0,
+                  ),
                 ),
                 child: const Center(
                   child: Text("Buy a package",
@@ -155,7 +174,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Color(0xff00B140),
                     ),
                   ),
                 ),
