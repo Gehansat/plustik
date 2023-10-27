@@ -59,22 +59,19 @@ class AppointmentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('Date: ${appointmentData['date']}'),
-      subtitle: Text('Time: ${appointmentData['time']}'),
-      trailing: ElevatedButton(
-        onPressed: () {
-          showDeleteConfirmationDialog(context);
-        },
-        style: ElevatedButton.styleFrom(
-          primary: Colors.red, // Change the button color to red
-          onPrimary: Colors.white, // Text color
-        ),
-        child: Text('Delete'),
-      ),
-      // You can add more appointment details here
-    );
-  }
+  return ListTile(
+    title: Text('Date: ${appointmentData['date']}'),
+    subtitle: Text('Time: ${appointmentData['time']}'),
+    trailing: IconButton(
+      icon: Icon(Icons.delete),
+      color: Colors.red, // Set the color of the delete icon
+      onPressed: () {
+        showDeleteConfirmationDialog(context);
+      },
+    ),
+    // You can add more appointment details here
+  );
+}
 
   void showDeleteConfirmationDialog(BuildContext context) {
     showDialog(
