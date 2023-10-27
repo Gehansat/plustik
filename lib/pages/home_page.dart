@@ -1,8 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:plustik/pages/appointments/wastecollectionUI.dart';
+
 import 'package:plustik/pages/myevents/event_calender.dart';
+import 'package:plustik/pages/notifications/notify_type_pg.dart';
+import 'package:plustik/pages/notifications/turnon_notify_pg.dart';
+import 'package:plustik/pages/preferences_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -26,9 +32,16 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
-                Image.asset("assets/user.png", scale: 12),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => TurnNotify()),
+                    );
+                  },
+                    child: Image.asset("assets/user.png", scale: 14)
+                ),
 
-                Text("You logged in as ${user!.email}"),
+                Text("Hi ${user?.email?.split('@')[0] ?? 'No Email'}"),
 
                 IconButton(
                     icon: const Icon(Icons.logout),
@@ -37,39 +50,53 @@ class HomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 30),
-            Container(
-              width: screenwidth * 0.8,
-              height: screenheight * 0.45,
-              decoration: BoxDecoration(
-                color: const Color(0xffF5F5F5),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Stack(
-                children: [
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Text(
-                        "Earn points for\ndiscarded\ntrash",
-                        style: TextStyle(
-                          fontSize: 23.0,
-                          fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () {
+              Navigator.of(context).push(
+                // CupertinoPageRoute(builder: (ctx) => const LoyaltyPointsPage()),
+                CupertinoPageRoute(builder: (ctx) => const PackagePage()),
+              );
+            },
+              child: Container(
+                width: screenwidth * 0.8,
+                height: screenheight * 0.45,
+                decoration: BoxDecoration(
+                  color: const Color(0xffF5F5F5),
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(
+                    color: const Color(0xff00B140),
+                    width: 2.0,
+                  ),
+                ),
+
+                child: Stack(
+                  children: [
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text(
+                          "Earn points for\ndiscarded\ntrash",
+                          style: TextStyle(
+                            fontSize: 23.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff00B140),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset(
-                        "assets/mainlarge.png",
-                        scale: 0.9,
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Image.asset(
+                          "assets/mainlarge.png",
+                          scale: 0.9,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 30),
@@ -105,7 +132,7 @@ class HomePage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                      CupertinoPageRoute(builder: (ctx) => const EventCalenderPage()),
+                      CupertinoPageRoute(builder: (ctx) => PreferencesScreen(user!)),
                     );
                   },
                   child: Container(
@@ -127,24 +154,36 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 const SizedBox(width: 25,),
               ],
             ),
             const SizedBox(height: 30),
-            Container(
-              width: screenwidth * 0.8,
-              height: screenheight * 0.15,
-              decoration: BoxDecoration(
-                color: const Color(0xffF5F5F5),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: const Center(
-                child: Text("Buy a package",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+            GestureDetector(
+              onTap: () {
+              Navigator.of(context).push(
+                CupertinoPageRoute(builder: (ctx) => const PackagePage()),
+              );
+            },
+              child: Container(
+                width: screenwidth * 0.8,
+                height: screenheight * 0.15,
+                decoration: BoxDecoration(
+                  color: const Color(0xffF5F5F5),
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(
+                    color: const Color(0xff00B140),
+                    width: 2.0,
+                  ),
+                ),
+                child: const Center(
+                  child: Text("Buy a package",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff00B140),
+                    ),
                   ),
                 ),
               ),
