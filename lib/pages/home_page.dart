@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plustik/pages/loyalty_program/packages.dart';
-import 'package:plustik/pages/loyalty_program/loyalty_points_home.dart';
+// import 'package:plustik/pages/loyalty_program/loyalty_points_home.dart';
 import 'package:plustik/pages/myevents/event_calender.dart';
 import 'package:plustik/pages/preferences_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,7 +43,8 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
               Navigator.of(context).push(
-                CupertinoPageRoute(builder: (ctx) => const LoyaltyPointsPage()),
+                // CupertinoPageRoute(builder: (ctx) => const LoyaltyPointsPage()),
+                CupertinoPageRoute(builder: (ctx) => const PackagePage()),
               );
             },
               child: Container(
