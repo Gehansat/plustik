@@ -15,13 +15,17 @@ class WasteCollectionUI extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset("assets/user.png", scale: 12),
-                Text("You logged in as ${user!.email}"),
-              ],
+            SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.only(left: 45.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/personHome.png", scale: 1.45),
+                  const SizedBox(width: 10),
+                  Text("Hi ${user!.email?.split('@')[0] ?? 'No Email'}"),
+                ],
+              ),
             ),
             SizedBox(height: 30),
             Container(

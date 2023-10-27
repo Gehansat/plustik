@@ -10,6 +10,8 @@ import 'package:plustik/pages/notifications/turnon_notify_pg.dart';
 import 'package:plustik/pages/preferences_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'loyalty_program/packages.dart';
+
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   
