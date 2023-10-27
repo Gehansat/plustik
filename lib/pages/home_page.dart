@@ -27,28 +27,41 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+            // Upper part of the screen | Profile picture and name | Logout button ==========
+            Padding(
+              padding: const EdgeInsets.fromLTRB(45, 15, 30, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        CupertinoPageRoute(builder: (ctx) => TurnNotify()),
+                      );
+                    },
+                    child: Image.asset("assets/personHome.png", scale: 1.4),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text("Hi ${user?.email?.split('@')[0] ?? 'No Email'}",
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.logout,
+                      color: Colors.black54,
+                    ),
+                    onPressed: signUserOut,
 
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      CupertinoPageRoute(builder: (ctx) => TurnNotify()),
-                    );
-                  },
-                    child: Image.asset("assets/user.png", scale: 14)
-                ),
-
-                Text("Hi ${user?.email?.split('@')[0] ?? 'No Email'}"),
-
-                IconButton(
-                    icon: const Icon(Icons.logout),
-                    onPressed: signUserOut
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 25),
             GestureDetector(
               onTap: () {
               Navigator.of(context).push(
@@ -62,10 +75,10 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xffF5F5F5),
                   borderRadius: BorderRadius.circular(10.0),
-                  border: Border.all(
-                    color: const Color(0xff00B140),
-                    width: 2.0,
-                  ),
+                  // border: Border.all(
+                  //   color: const Color(0xff00B140),
+                  //   width: 2.0,
+                  // ),
                 ),
 
                 child: Stack(
@@ -79,7 +92,7 @@ class HomePage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 23.0,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xff00B140),
+                            color: Colors.black,
                           ),
                         ),
                       ),
