@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:plustik/pages/appointments/listappointments.dart';
 
 class Successpage extends StatelessWidget {
   final String date; // Add date parameter to get from the database
@@ -13,6 +15,7 @@ class Successpage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Success Page'),
+        backgroundColor: const Color(0xff00B140),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align content at the center and space evenly
@@ -20,18 +23,18 @@ class Successpage extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 20), // Add some space at the top
-              Image.asset(
-                'assets/logo.png', // Your logo image asset
-                // height: 150,
-                scale: 1.5,
-              ),
-              const SizedBox(height: 30),
+              // const SizedBox(height: 20), // Add some space at the top
+              // Image.asset(
+              //   'assets/logo.png', // Your logo image asset
+              //   // height: 150,
+              //   scale: 1.5,
+              // ),
+              const SizedBox(height: 100),
               Image.asset(
                 'assets/success.png', // Your success image asset
                 height: 100,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               const Text(
                 'Your appointment has been successfully scheduled.',
                 style: TextStyle(fontSize: 16),
@@ -68,12 +71,14 @@ class Successpage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               // Navigate to the HomePage
-              Navigator.of(context).pop();
+              Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => AppointmentsListPage()),
+                    );
             },
             style: ElevatedButton.styleFrom(
               primary: Color(0xff00B140), // Background color
             ),
-            child: const Text('Go to Home'),
+            child: const Text('Done'),
           ),
           SizedBox(height: 40),
         ],

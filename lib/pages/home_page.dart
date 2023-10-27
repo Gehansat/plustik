@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: const Center(
-                      child: Text("My\nAppointments",
+                      child: Text("Appointments",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18.0,

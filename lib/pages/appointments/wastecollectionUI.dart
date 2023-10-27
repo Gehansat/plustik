@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plustik/pages/appointments/appointment.dart';
+import 'package:plustik/pages/appointments/listappointments.dart';
 
 class WasteCollectionUI extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser;
@@ -58,7 +59,7 @@ class WasteCollectionUI extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -67,11 +68,37 @@ class WasteCollectionUI extends StatelessWidget {
                   onTap: () {
                     // Navigate to the Appointments page
                     Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => AppointmentsListPage()),
+                    );
+                  },
+                  child: Container(
+                    width: screenWidth * 0.38,
+                    height: screenHeight * 0.10,
+                    decoration: BoxDecoration(
+                      color: Color(0xff00B140),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "View Appointments",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),GestureDetector(
+                  onTap: () {
+                    // Navigate to the Appointments page
+                    Navigator.of(context).push(
                       CupertinoPageRoute(builder: (ctx) => AddAppointmentPage()),
                     );
                   },
                   child: Container(
-                    width: screenWidth * 0.5,
+                    width: screenWidth * 0.38,
                     height: screenHeight * 0.10,
                     decoration: BoxDecoration(
                       color: Color(0xff00B140),
