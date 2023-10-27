@@ -63,7 +63,7 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         // Add leading icon for the calendar
-                        prefixIcon: Icon(Icons.calendar_today),
+                        suffixIcon: Icon(Icons.calendar_today),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -80,35 +80,36 @@ class _AddAppointmentPageState extends State<AddAppointmentPage> {
                     ),
                     SizedBox(height: 10),
                     TextFormField(
-                      controller: timeController,
-                      decoration: InputDecoration(
-                        labelText: 'Time',
-                        hintText: 'Time (HH:MM)',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        // Add leading icon for the clock
-                        prefixIcon: Icon(Icons.access_time),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter a time';
-                        }
-                        if (!isValidTime(value)) {
-                          return 'Invalid time format (HH:MM)';
-                        }
-                        return null;
-                      },
-                      onTap: () {
-                        _selectTime(context);
-                      },
-                    ),
+  controller: timeController,
+  decoration: InputDecoration(
+    labelText: 'Time',
+    hintText: 'Time (HH:MM)',
+    hintStyle: TextStyle(color: Colors.grey),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.blue),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    // Add trailing icon for the clock
+    suffixIcon: Icon(Icons.access_time),
+  ),
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a time';
+    }
+    if (!isValidTime(value)) {
+      return 'Invalid time format (HH:MM)';
+    }
+    return null;
+  },
+  onTap: () {
+    _selectTime(context);
+  },
+),
+
                     SizedBox(height: 10),
                     TextFormField(
                       controller: contactnoController,
