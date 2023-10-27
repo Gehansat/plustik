@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class AddEventPage extends StatefulWidget {
   @override
@@ -14,6 +15,34 @@ class _AddEventPageState extends State<AddEventPage> {
   final TextEditingController timeController = TextEditingController();
   final TextEditingController venueController = TextEditingController();
   String selectedCategory = 'Workshops'; // Default category
+
+  Future<void> _selectDate() async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null) {
+      setState(() {
+        dateController.text = DateFormat('yyyy-MM-dd').format(picked);
+      });
+    }
+  }
+
+  Future<void> _selectTime() async {
+    TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    if (picked != null) {
+      setState(() {
+        timeController.text = picked.format(context);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +82,7 @@ class _AddEventPageState extends State<AddEventPage> {
                   labelText: 'Date',
                   hintText: 'YYYY-MM-DD',
                 ),
+                onTap: _selectDate,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a date';
@@ -67,6 +97,7 @@ class _AddEventPageState extends State<AddEventPage> {
                   labelText: 'Time',
                   hintText: 'HH:MM',
                 ),
+                onTap: _selectTime,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a time';
