@@ -16,24 +16,25 @@ class PackagePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
-            const Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/person.jpg'),
-                ),
-                SizedBox(width: 20),
-                Text(
-                  'Hi John!',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ],
-            ),
-            SizedBox(height: 5),
+            // const Row(
+            //   children: [
+            //     CircleAvatar(
+            //       backgroundImage: AssetImage('assets/person.jpg'),
+            //     ),
+            //     SizedBox(width: 20),
+            //     Text(
+            //       'Hi John!',
+            //       style: TextStyle(fontSize: 18),
+            //     ),
+            //   ],
+            // ),
+            SizedBox(height: 25),
             const Text(
               'Choose your Package',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 15),
+            SizedBox(height: 12),
             _buildPackageOption(
               'Occasional Disposer',
               'One Day Plan',
@@ -44,7 +45,7 @@ class PackagePage extends StatelessWidget {
               ],
               'Rs.1000/=',
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 12),
             _buildPackageOption(
               'Regular Disposer',
               'Two Day Plan',
@@ -55,7 +56,7 @@ class PackagePage extends StatelessWidget {
               ],
               'Rs.2000/=',
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 12),
             _buildPackageOption(
               'Dedicated Disposer',
               'Three or More Days Plan',
@@ -71,28 +72,36 @@ class PackagePage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'Note:',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(
-                            text:
-                                ' You can easily purchase your preferred plan directly from our friendly garbage collectors during waste collection.'),
-                      ],
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: TextStyle(color: Colors.black45),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Note:',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              )
+                          ),
+                          TextSpan(
+                              text:
+                                  ' You can easily purchase your preferred plan directly from our friendly garbage collectors during waste collection.'),
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 25),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
+                      primary: Color(0xff00B140),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 70, vertical: 10),
                       shape: RoundedRectangleBorder(
@@ -120,13 +129,13 @@ class PackagePage extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(
         minWidth: double.infinity,
-        maxHeight: 150,
+        maxHeight: 200,
       ),
       child: Stack(
         children: [
           Container(
             width: 500,
-            height: 150,
+            height: 180,
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Color.fromARGB(255, 245, 245, 245),
@@ -160,7 +169,7 @@ class PackagePage extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(32),
               decoration: BoxDecoration(
-                color: Colors.green,
+                color: Color(0xff00B140),
                 shape: BoxShape.circle,
               ),
               child: Center(
