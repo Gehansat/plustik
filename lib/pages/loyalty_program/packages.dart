@@ -15,7 +15,7 @@ class PackagePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 35),
             const Row(
               children: [
                 CircleAvatar(
@@ -28,12 +28,12 @@ class PackagePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 10),
             const Text(
               'Choose your Package',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 12),
             _buildPackageOption(
               'Occasional Disposer',
               'One Day Plan',
@@ -44,7 +44,7 @@ class PackagePage extends StatelessWidget {
               ],
               'Rs.1000/=',
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 12),
             _buildPackageOption(
               'Regular Disposer',
               'Two Day Plan',
@@ -55,7 +55,7 @@ class PackagePage extends StatelessWidget {
               ],
               'Rs.2000/=',
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 12),
             _buildPackageOption(
               'Dedicated Disposer',
               'Three or More Days Plan',
@@ -66,7 +66,7 @@ class PackagePage extends StatelessWidget {
               ],
               'Rs.3500/=',
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 25),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -81,11 +81,12 @@ class PackagePage extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         TextSpan(
                             text:
-                                ' You can easily purchase your preferred plan directly from our friendly garbage collectors during waste collection.'),
+                                ' You can easily purchase your preferred plan directly from our friendly garbage collectors during waste collection.',
+                            style: TextStyle(fontSize: 15)),
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: screenheight * 0.03),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(context,

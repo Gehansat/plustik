@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:plustik/pages/home_page.dart';
 
-class SuccessPage extends StatelessWidget {
-  const SuccessPage({super.key});
+class SuccessPage extends StatefulWidget {
+  final int points;
 
+  SuccessPage({required this.points});
+
+  @override
+  _SuccessPageState createState() => _SuccessPageState();
+}
+
+class _SuccessPageState extends State<SuccessPage> {
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
@@ -26,32 +33,31 @@ class SuccessPage extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 CircleAvatar(
-                  radius: 60,
-                  backgroundColor: const Color.fromARGB(255, 195, 248, 223),
-                  child: RichText(
-                    text: const TextSpan(
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                    radius: 60,
+                    backgroundColor: const Color.fromARGB(255, 195, 248, 223),
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: '${widget.points}',
+                            style: TextStyle(
+                              fontSize: 40,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ' pts',
+                            style: TextStyle(
+                              fontSize: 21,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
                       ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '338',
-                          style: TextStyle(
-                            fontSize: 40,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' pts',
-                          style: TextStyle(
-                            fontSize: 21,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                    )),
               ],
             ),
             const SizedBox(height: 2),
