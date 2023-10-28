@@ -15,25 +15,24 @@ class PackagePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            // const Row(
-            //   children: [
-            //     CircleAvatar(
-            //       backgroundImage: AssetImage('assets/person.jpg'),
-            //     ),
-            //     SizedBox(width: 20),
-            //     Text(
-            //       'Hi John!',
-            //       style: TextStyle(fontSize: 18),
-            //     ),
-            //   ],
-            // ),
-            SizedBox(height: 25),
+            SizedBox(height: 35),
+            const Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/person.jpg'),
+                ),
+                SizedBox(width: 20),
+                Text(
+                  'Hi John!',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
             const Text(
               'Choose your Package',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 15),
             SizedBox(height: 12),
             _buildPackageOption(
               'Occasional Disposer',
@@ -67,34 +66,27 @@ class PackagePage extends StatelessWidget {
               ],
               'Rs.3500/=',
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 25),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: TextStyle(color: Colors.black45),
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'Note:',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              )
-                          ),
-                          TextSpan(
-                              text:
-                                  ' You can easily purchase your preferred plan directly from our friendly garbage collectors during waste collection.'),
-                        ],
-                      ),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'Note:',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text:
+                                ' You can easily purchase your preferred plan directly from our friendly garbage collectors during waste collection.',
+                            style: TextStyle(fontSize: 15)),
+                      ],
                     ),
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: screenheight * 0.03),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(context,

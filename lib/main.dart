@@ -4,10 +4,9 @@ import 'package:plustik/pages/login/auth_page.dart';
 // firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:plustik/pages/splash_screen/splash.dart';
-// import 'package:plustik/pages/splash_screen/splash.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
