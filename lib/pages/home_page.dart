@@ -1,11 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plustik/pages/loyalty_program/packages.dart';
-import 'package:plustik/pages/loyalty_program/loyalty_points_home.dart';
+
+import 'package:plustik/pages/appointments/wastecollectionUI.dart';
+
 import 'package:plustik/pages/myevents/event_calender.dart';
+import 'package:plustik/pages/notifications/notify_type_pg.dart';
+import 'package:plustik/pages/notifications/turnon_notify_pg.dart';
 import 'package:plustik/pages/preferences_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'loyalty_program/packages.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -25,25 +30,46 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+            // Upper part of the screen | Profile picture and name | Logout button ==========
+            Padding(
+              padding: const EdgeInsets.fromLTRB(45, 15, 30, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        CupertinoPageRoute(builder: (ctx) => TurnNotify()),
+                      );
+                    },
+                    child: Image.asset("assets/personHome.png", scale: 1.4),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text("Hi ${user?.email?.split('@')[0] ?? 'No Email'}",
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.logout,
+                      color: Colors.black54,
+                    ),
+                    onPressed: signUserOut,
 
-                Image.asset("assets/user.png", scale: 12),
-
-                Text("You logged in as ${user!.email}"),
-
-                IconButton(
-                    icon: const Icon(Icons.logout),
-                    onPressed: signUserOut
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 25),
             GestureDetector(
               onTap: () {
               Navigator.of(context).push(
-                CupertinoPageRoute(builder: (ctx) => const LoyaltyPointsPage()),
+                // CupertinoPageRoute(builder: (ctx) => const LoyaltyPointsPage()),
+                CupertinoPageRoute(builder: (ctx) => const PackagePage()),
               );
             },
               child: Container(
@@ -52,7 +78,12 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xffF5F5F5),
                   borderRadius: BorderRadius.circular(10.0),
+                  // border: Border.all(
+                  //   color: const Color(0xff00B140),
+                  //   width: 2.0,
+                  // ),
                 ),
+
                 child: Stack(
                   children: [
                     const Align(
@@ -64,6 +95,7 @@ class HomePage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 23.0,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -87,20 +119,27 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const SizedBox(width: 25,),
-                Container(
-                  width: screenwidth * 0.4,
-                  height: screenheight * 0.14,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff00B140),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: const Center(
-                    child: Text("My\nAppointments",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (ctx) => WasteCollectionUI()),
+                    );
+                  },
+                  child: Container(
+                    width: screenwidth * 0.4,
+                    height: screenheight * 0.14,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff00B140),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: const Center(
+                      child: Text("Appointments",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -147,6 +186,10 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xffF5F5F5),
                   borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(
+                    color: const Color(0xff00B140),
+                    width: 2.0,
+                  ),
                 ),
                 child: const Center(
                   child: Text("Buy a package",
@@ -154,7 +197,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Color(0xff00B140),
                     ),
                   ),
                 ),

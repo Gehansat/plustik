@@ -31,7 +31,7 @@ class PackagePage extends StatelessWidget {
             SizedBox(height: 10),
             const Text(
               'Choose your Package',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 12),
             _buildPackageOption(
@@ -93,7 +93,7 @@ class PackagePage extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
+                      primary: Color(0xff00B140),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 70, vertical: 10),
                       shape: RoundedRectangleBorder(
@@ -121,13 +121,13 @@ class PackagePage extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(
         minWidth: double.infinity,
-        maxHeight: 150,
+        maxHeight: 200,
       ),
       child: Stack(
         children: [
           Container(
             width: 500,
-            height: 150,
+            height: 180,
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Color.fromARGB(255, 245, 245, 245),
@@ -161,7 +161,7 @@ class PackagePage extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(32),
               decoration: BoxDecoration(
-                color: Colors.green,
+                color: Color(0xff00B140),
                 shape: BoxShape.circle,
               ),
               child: Center(
