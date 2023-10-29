@@ -88,7 +88,7 @@ class _RedeemPageState extends State<RedeemPage> {
             SizedBox(height: 15),
             Container(
               width: 800,
-              height: 250,
+              height: 300,
               decoration: BoxDecoration(
                 color: const Color(0xffF5F5F5),
                 borderRadius: BorderRadius.circular(10.0),
@@ -114,14 +114,14 @@ class _RedeemPageState extends State<RedeemPage> {
                       padding: const EdgeInsets.all(16.0),
                       child: Image.asset(
                         "assets/mainlarge.png",
-                        scale: 0.9,
+                        scale: 1.1,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 25),
             Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -160,7 +160,7 @@ class _RedeemPageState extends State<RedeemPage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
@@ -178,16 +178,17 @@ class _RedeemPageState extends State<RedeemPage> {
                     ),
                   ],
                 )),
-            SizedBox(height: 15),
+            SizedBox(height: 25),
             ElevatedButton(
               onPressed: deductPointsAndNavigate,
               style: ElevatedButton.styleFrom(
-                primary: Colors.green,
+                primary: Color(0xff00B140),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
+                minimumSize: Size(400, 60),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -205,7 +206,7 @@ class _RedeemPageState extends State<RedeemPage> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
@@ -218,6 +219,7 @@ class _RedeemPageState extends State<RedeemPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
+                minimumSize: Size(400, 60),
               ),
               child: const Text('Back to Home', style: TextStyle(fontSize: 16)),
             ),

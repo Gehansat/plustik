@@ -1,16 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plustik/pages/loyalty_program/calculate_points.dart';
 
 class LoyaltyPointsPage extends StatefulWidget {
   const LoyaltyPointsPage({super.key});
 
+
   @override
   _LoyaltyPointsPageState createState() => _LoyaltyPointsPageState();
+
 }
 
 class _LoyaltyPointsPageState extends State<LoyaltyPointsPage> {
   int loyaltyPoints = 100;
   final int freePoints = 50;
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +28,16 @@ class _LoyaltyPointsPageState extends State<LoyaltyPointsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 30),
-            const Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/person.jpg'),
-                ),
-                SizedBox(width: 20),
-                Text(
-                  'Hi John!',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/personHome.png", scale: 1.45),
+                  const SizedBox(width: 10),
+                  Text("Hi ${user!.email?.split('@')[0] ?? 'No Email'}"),
+                ],
+              ),
             ),
             SizedBox(height: 10),
             Container(
@@ -198,36 +201,48 @@ class _LoyaltyPointsPageState extends State<LoyaltyPointsPage> {
                 ],
               ),
             ),
-            SizedBox(height: 15),
-            _buildSection(
-                ('assets/image0.jpg'),
-                "Glass",
-                "Recycle glass bottles and containers",
-                "03 Points for 1kg (1 Kilo)"),
-            SizedBox(height: 5),
-            _buildSection(
-                "assets/image1.jpg",
-                "Paper",
-                "Recycle newspapers,  magazines, and cardboard",
-                "04 Points for 1kg (1 Kilo)"),
-            SizedBox(height: 5),
-            _buildSection(
-                "assets/image2.jpg",
-                "Plastic",
-                "Recycle plastic bottles and containers",
-                "03 Points for 1kg (1 Kilo)"),
-            SizedBox(height: 5),
-            _buildSection(
-                "assets/image3.jpg",
-                "Organic",
-                "Compost food scraps and organic waste",
-                "05 Points for 1kg (1 Kilo)"),
-            SizedBox(height: 5),
+            SizedBox(height: 25),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: _buildSection(
+                  ('assets/image0.jpg'),
+                  "Glass",
+                  "Recycle glass bottles and containers",
+                  "03 Points for 1kg (1 Kilo)"),
+            ),
+            SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: _buildSection(
+                  "assets/image1.jpg",
+                  "Paper",
+                  "Recycle newspapers,  magazines, and cardboard",
+                  "04 Points for 1kg (1 Kilo)"),
+            ),
+            SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: _buildSection(
+                  "assets/image2.jpg",
+                  "Plastic",
+                  "Recycle plastic bottles and containers",
+                  "03 Points for 1kg (1 Kilo)"),
+            ),
+            SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: _buildSection(
+                  "assets/image3.jpg",
+                  "Organic",
+                  "Compost food scraps and organic waste",
+                  "05 Points for 1kg (1 Kilo)"),
+            ),
+            SizedBox(height: 8),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 10),
+                  SizedBox(height: 25),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -246,6 +261,7 @@ class _LoyaltyPointsPageState extends State<LoyaltyPointsPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                      minimumSize: Size(200, 50),
                     ),
                     child: const Text('Earn Points',
                         style: TextStyle(fontSize: 16)),

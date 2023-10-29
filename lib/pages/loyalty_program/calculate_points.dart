@@ -34,7 +34,7 @@ class _PointsCalculatorState extends State<CalculatePointsPage> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 20),
+              SizedBox(height: 30),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

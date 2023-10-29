@@ -21,7 +21,7 @@ class _SuccessPageState extends State<SuccessPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -60,9 +60,9 @@ class _SuccessPageState extends State<SuccessPage> {
                     )),
               ],
             ),
-            const SizedBox(height: 2),
-            Image.asset("assets/success.jpg", scale: 2),
-            const SizedBox(height: 2),
+            const SizedBox(height: 5),
+            Image.asset("assets/success.jpg", scale: 1.9),
+            const SizedBox(height: 5),
             const Text(
               'Congratulations!',
               style: TextStyle(
@@ -70,7 +70,7 @@ class _SuccessPageState extends State<SuccessPage> {
                   fontWeight: FontWeight.bold,
                   color: Colors.black87),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Text(
@@ -80,14 +80,14 @@ class _SuccessPageState extends State<SuccessPage> {
                     fontSize: 16.5, color: Color.fromARGB(135, 0, 0, 0)),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => HomePage()));
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.green,
+                primary: Color(0xff00B140),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 70, vertical: 15),
                 shape: RoundedRectangleBorder(

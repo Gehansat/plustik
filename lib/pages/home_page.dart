@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:plustik/pages/appointments/wastecollectionUI.dart';
+import 'package:plustik/pages/loyalty_program/loyalty_points_home.dart';
 
 import 'package:plustik/pages/myevents/event_calender.dart';
 import 'package:plustik/pages/notifications/notify_type_pg.dart';
@@ -68,8 +69,8 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
               Navigator.of(context).push(
-                // CupertinoPageRoute(builder: (ctx) => const LoyaltyPointsPage()),
-                CupertinoPageRoute(builder: (ctx) => const PackagePage()),
+                CupertinoPageRoute(builder: (ctx) => const LoyaltyPointsPage()),
+                // CupertinoPageRoute(builder: (ctx) => const PackagePage()),
               );
             },
               child: Container(
